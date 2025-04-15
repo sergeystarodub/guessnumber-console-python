@@ -5,10 +5,15 @@ def NumberPlayers():    # функция для задания количест�
     
     # список для хранения имен игроков
     namelist = []
+    # список для хранения имен игроков, но записанных в нижнем регистре-после применения к ним метода lower()
+    namelist_lower = []
+    
 
     # присваиваем игрокам имена
     for item in range(1, number + 1):
         playername = input("Введите имя игрока номер " + str(item) + ": ")
+        # исходное имя пользователя - как его ввели
+        original_playername = playername
         # привожу имена к нижнему регистру для их дальнейшего сравнения
         playername = playername.lower()
         #namelist.append(playername)
@@ -16,18 +21,21 @@ def NumberPlayers():    # функция для задания количест�
 
         while (True):
 
-            if (playername in namelist):
+            if (playername in namelist_lower):
                 playername = input("Игрок с таким именем уже существует - введите другое имя игрока номер " + str(item) + ": ")
+                original_playername = playername
                 playername = playername.lower()
             else:
-                namelist.append(playername)
+                namelist_lower.append(playername)
+                namelist.append(original_playername)
                 break
-    # цикл для замены строчных первых букв у имен на заглавные
-    for n in range(len(namelist)):
+    # цикл для замены строчных первых букв у имен на заглавные - решил так не делать а использовать никнеймы в том виде в каком их ввел пользователь
+    # это пока закоментил, чтобы был код как пример реализации
+    #for n in range(len(namelist)):
        # здесь приходится применить str чтобы заработал capitalize - иначе синтаксис не подсвечивается а ПК зависает
-       namelist[n] = str(namelist[n]).capitalize()
+       #namelist[n] = str(namelist[n]).capitalize()
     # проверка-потом удалить
-    #print(namelist)
+    print(namelist)
     return namelist
 
 # проверка
