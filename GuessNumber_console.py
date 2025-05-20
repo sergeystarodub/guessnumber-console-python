@@ -132,12 +132,13 @@ def main():
                     # если flag равен 1 - Победа можно завершить цикл угадывания числа
                     flag = 1
                     break
-
-
         answer = input("Желаете повторить игру? y/n: ")
+        while (answer != 'n' and answer != 'y'):
+            print("Введите корректно ответ на вопрос y или n")
+            answer = input("Желаете повторить игру? y/n: ")
         if (answer == 'n'):
             break
-        else:
+        elif (answer == 'y'):
             oldplayers = input("Хотите сыграть с прежним составом игроков? y/n: ")
             if (oldplayers == 'n'):
                 # вводим количество игроков и их имена
@@ -148,6 +149,7 @@ def main():
                 # Метод clear() доступен только в Python 3.3 и выше
                 #numberlist.clear()
                 continue
+        
 
 # вызов главной функции для запуска программы
 main()
