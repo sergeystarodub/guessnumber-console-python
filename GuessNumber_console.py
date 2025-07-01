@@ -96,6 +96,22 @@ def RandomNumber():     # функция для случайного генер�
 # проверка
 #print(RandomNumber())
 
+def NumberMoves():
+    answercomplexity = int(input("Желаете ли Вы включить опцию ограничения попыток угадывания числа? y/n: "))
+    # цикл опроса на который можно ответить только y/n
+    while (answercomplexity != 'n' and answercomplexity != 'y'):
+        print("Введите корректно ответ на вопрос y или n")
+        answercomplexity = int(input("Желаете ли Вы включить опцию ограничения попыток угадывания числа? y/n: "))
+    if (answercomplexity == 'n'):
+        # потом проверить так будет работать или нет
+        return
+    elif (answercomplexity == 'y'):
+        playermoves = int(input("Введите количество попыток угадывания загаданного числа: "))
+    return playermoves
+
+
+
+
 def main():
     # вводим количество игроков и их имена
     numplayer = NumberPlayers()
@@ -132,6 +148,8 @@ def main():
                     # если flag равен 1 - Победа можно завершить цикл угадывания числа
                     flag = 1
                     break
+            # здесь должна быть проверка на количество ходов - после каждого хода (когда все игроки прошли один цикл угадывания) происходит декремент счетчика ходов
+
         answer = input("Желаете повторить игру? y/n: ")
         # цикл опроса на который можно ответить только y/n
         while (answer != 'n' and answer != 'y'):
