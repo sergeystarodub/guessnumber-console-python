@@ -97,7 +97,7 @@ def RandomNumber():     # функция для случайного генер�
 #print(RandomNumber())
 
 def NumberMoves():      # функция сложности игры - ограничение на количество попыток угадывания числа
-    answercomplexity = (input("Желаете ли Вы включить опцию ограничения попыток угадывания числа? y/n: "))
+    answercomplexity = input("Желаете ли Вы включить опцию ограничения попыток угадывания числа? y/n: ")
     # цикл опроса на который можно ответить только y/n
     while (answercomplexity != 'n' and answercomplexity != 'y'):
         print("Введите корректно ответ на вопрос y или n")
@@ -107,7 +107,18 @@ def NumberMoves():      # функция сложности игры - огра�
         #return
         playermoves = None
     elif (answercomplexity == 'y'):
-        playermoves = int(input("Введите количество попыток угадывания загаданного числа: "))
+        while True:
+            try:
+                playermoves = int(input("Введите количество попыток угадывания загаданного числа от 1 и более: "))
+                # проверка на ввод некорректного отрицательного значения или нуля
+                if (playermoves < 1):
+                    print("Введите корректное положительное значение или не ноль - (0)")
+                    continue
+                else:
+                    break
+            except ValueError:
+                print("Повторите корректный ввод числа количества попыток. Вы ввели строку или пустую строку")
+
     return playermoves
 
 
