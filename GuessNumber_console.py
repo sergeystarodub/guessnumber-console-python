@@ -70,7 +70,7 @@ def NumberPlayers():    # функция для задания количест�
        # здесь приходится применить str чтобы заработал capitalize - иначе синтаксис не подсвечивается а ПК зависает
        #namelist[n] = str(namelist[n]).capitalize()
     # проверка-потом удалить
-    print(namelist)
+    #print(namelist)
     return namelist
 
 # проверка
@@ -146,11 +146,23 @@ def main():
             for player in numplayer:
                 print(f'Угадывает число игрок {player}: ')
                 # просьба ввести число
-                guessednumber = int(input("Введите число: "))
+                # обработка корректности ввода числа
+                while True:
+                    try:
+                        guessednumber = int(input("Введите число: "))
+                        break
+                    except:
+                        print("Введите число корректно, вы ввели строку или пустую строку")
                 # цикл проверки содержится ли названное число в списке - было ли уже названо или нет
                 while (guessednumber in numberlist):
                     print("Число уже было названо - введите число повторно.")
-                    guessednumber = int(input("Введите число: "))
+                    # обработка корректности ввода числа
+                    while True:
+                        try:
+                            guessednumber = int(input("Введите число: "))
+                            break
+                        except:
+                            print("Введите число корректно, вы ввели строку или пустую строку")
 
                 # добавляем предполагаемое число в список, чтобы знать какие числа игроками были названы
                 numberlist.append(guessednumber)
